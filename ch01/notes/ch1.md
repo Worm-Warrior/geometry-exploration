@@ -22,15 +22,21 @@ The convention is to list the vertices of a polygon in counterclockwise order, s
 ![[Pasted image 20260414001259.png]]
 
 ## The Art Gallery Theorem
-### Problem Definition
+### **Problem Definition**
 We will study a problem that will lead naturally into the issue of triangulation, the most important polygon partitioning. Imagine an art gallery room whose floor plan can be modeled by a polygon of $n$ vertices. How many stationary guards are needed to guard the room? Each guard is considered a fixed point that has a $2\pi$ range of visibility, e.g, $360\degree$. Guards cannot see through walls. You can also form the question in terms of how many point lights are needed to fully illuminate the room.
 We will make the problem rigorous before attempting an answer.
 
-### Visibility
+### **Visibility**
 We say that point $x$ can *see* point $y$ iff the closed segment $xy$ is nowhere exterior to the polygon $P:xy\subseteq P$. This definition allows grazing contact with a vertex as shown above in figure 1.2. An alternative definition: say that $x$ has *clear visibility* to $y$ if $xy \subseteq P$ and $xy \cap \partial P \text{ and }\subseteq \{x,y\}$. We will sometimes use this definition.
 A guard is a point. A set of guards is said to *cover* a polygon if every point in the polygon is visible to *some* guard. Guards do not block each other's visibility. Note that we could require the guards to only see points of $\partial P$, this is a variant explored in exercise 1.1.4[1].
 
-### Max over Min Formulation
+### **Max over Min Formulation**
 The problem is to find the maximum over all polygons of $n$ vertices, of the minimum number of guards needed to cover the polygon.
 ![[Pasted image 20260414234859.png]]
 For any given fixed polygon, there is some minimum number of guards that are *necessary* for complete coverage. Thus in figure 1.3(a), it is clear that three guards are needed to cover that polygon of twelve vertices, although there is a lot of freedom in the location of the three guards. But is three the most that is ever needed for all possible twelve vertex polygons? No: the polygon in 1.3(b) requires four guards. What is the largest number of guards that any polygon of twelve vertices needs? We will show that four guards will always *suffice* for any polygon of twelve vertices. This is what the question seeks: Express as a function of $n$, the smallest number of guards that suffice to cover any polygon of $n$ vertices. Necessary in that at least that many are needed for *some* polygons, and sufficient in that that many always suffice for *any* polygon.
+
+Let's formalize the problem more. Let $g(P)$ be the smallest number of guards needed to cover polygon $P: g(P)=\text{min}_S | \{S:\text{S covers P}\}|$, where $S$ is a set of points, and $|S|$ is the cardinality of $S$. Let $P_n$ be a polygon of $n$ vertices. $G(n)$ is the maximum of $g(P_n)$ over all polygons of $n$ vertices: $G(n) = \text{max}_{P_n}g(P_n)$. The art gallery problem is to determine the function $G(n)$. Let it be known that $G(n)$ is defined and finite for all $n$.
+
+### **Empirical Exploration**
+*sufficiency of n*. It is obvious that at least one guard is always necessary. This gives us our lower bound on $G(n): 1\leq G(n)$. It is also pretty obvious that $n$ guards will suffice for any polygon: stand a guard at every vertex will certainly cover the polygon. This gives us our upper bound: $G(n) \leq n$. In this case the intuition that $n$ guards can cover the polygon sufficiently is true and can be proven, but this is not the case for three dimensions (see Exercise 1.1.4[6]).
+There are many art-gallery-like problems, and for most of them it is easiest first to establish the lower bound on $G(n)$ by finding generic examples showing that a large number of guards are sometimes necessary.
