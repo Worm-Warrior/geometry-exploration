@@ -1,0 +1,9 @@
+/* Rendered math (Reading mode & Live Preview after leaving the block) */
+mjx-container {
+    font-size: 1.2em !important;
+}
+
+/* Source/edit view (while typing inside a math block) */
+.cm-s-obsidian span.cm-math {
+    font-size: 1.2em;
+}
