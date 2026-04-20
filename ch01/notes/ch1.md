@@ -39,4 +39,12 @@ Let's formalize the problem more. Let $g(P)$ be the smallest number of guards ne
 
 ### **Empirical Exploration**
 *sufficiency of n*. It is obvious that at least one guard is always necessary. This gives us our lower bound on $G(n): 1\leq G(n)$. It is also pretty obvious that $n$ guards will suffice for any polygon: stand a guard at every vertex will certainly cover the polygon. This gives us our upper bound: $G(n) \leq n$. In this case the intuition that $n$ guards can cover the polygon sufficiently is true and can be proven, but this is not the case for three dimensions (see Exercise 1.1.4[6]).
-There are many art-gallery-like problems, and for most of them it is easiest first to establish the lower bound on $G(n)$ by finding generic examples showing that a large number of guards are sometimes necessary.
+There are many art-gallery-like problems, and for most of them it is easiest first to establish the lower bound on $G(n)$ by finding generic examples showing that a large number of guards are sometimes necessary. When it seems that no amount of ingenuity can increase the number necessary, then it is time to turn to proving that that number is also sufficient. 
+If you consider small values of $n = {3,4,5}$ then we only need $1$ guard, for $n=6$ we need $2$.
+
+### Necessity of $\lfloor n/3\rfloor$
+At this point you might be able to leap to the generalization of Figure 1.4(f) for larger values of $n$ as seen below.
+![[Pasted image 20260416115714.png]]
+Figure 1.5 illustrates the design for $n=12$; note the relation to figure 1.4(f). This "comb" shape consists of $k$ prongs, with each prong composed of two edges, and adjacent prongs separated by an edge. Associating each prong with the separating edge to its right, and the bottom edge with the rightmost prong, we see that a comb of $k$ prongs has $n=3k$ edges (and therefore vertices). Because each prong requires it s own guard, we establish with this one example that $n/3 \leq G(n) \text{ for } n=3k$. Noticing that $G(3)=G(4)=G(5)$ might lead one to conjecture that $G(n)=\lfloor n/3 \rfloor$, and in fact this conjecture turns out to be true. This is usually the way mathematical questions are answered: First the answer is a conjecture after exploring the question, and only once a goal is defined, the work of proving it is undertaken. We now turn to a proof of this conjecture.
+
+## 1.1.3 Fisk's Proof of Sufficiency
